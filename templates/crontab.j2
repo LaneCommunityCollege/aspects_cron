@@ -1,0 +1,22 @@
+###############################################################
+## This file is managed by Ansible.
+## Local changes will be overwritten next time Ansible is run.
+## DO NOT MAKE LOCAL CHANGES
+## {{ ansible_managed }}
+###############################################################
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL={{ aspects_cron_config.shell }}
+PATH={{ aspects_cron_config.path }}
+MAILTO={{ aspects_cron_config.mailto }}
+HOME={{ aspects_cron_config.home }}
+
+# m h dom mon dow user	command
+{{ aspects_cron_config.crontab_hourly_min }} {{ aspects_cron_config.crontab_hourly_hr }} {{ aspects_cron_config.crontab_hourly_dom }} {{ aspects_cron_config.crontab_hourly_mon }} {{ aspects_cron_config.crontab_hourly_dow }} {{ aspects_cron_config.crontab_hourly_user }} {{ aspects_cron_config.crontab_hourly_command }}
+{{ aspects_cron_config.crontab_daily_min }} {{ aspects_cron_config.crontab_daily_hr }} {{ aspects_cron_config.crontab_daily_dom }} {{ aspects_cron_config.crontab_daily_mon }} {{ aspects_cron_config.crontab_daily_dow }} {{ aspects_cron_config.crontab_daily_user }} {{ aspects_cron_config.crontab_daily_command }}
+{{ aspects_cron_config.crontab_weekly_min }} {{ aspects_cron_config.crontab_weekly_hr }} {{ aspects_cron_config.crontab_weekly_dom }} {{ aspects_cron_config.crontab_weekly_mon }} {{ aspects_cron_config.crontab_weekly_dow }} {{ aspects_cron_config.crontab_weekly_user }} {{ aspects_cron_config.crontab_weekly_command }}
+{{ aspects_cron_config.crontab_monthly_min }} {{ aspects_cron_config.crontab_monthly_hr }} {{ aspects_cron_config.crontab_monthly_dom }} {{ aspects_cron_config.crontab_monthly_mon }} {{ aspects_cron_config.crontab_monthly_dow }} {{ aspects_cron_config.crontab_monthly_user }} {{ aspects_cron_config.crontab_monthly_command }}
