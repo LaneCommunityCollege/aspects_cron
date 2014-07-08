@@ -3,16 +3,17 @@
 - name: Set crontab template
   template: src="crontab.j2" dest="/etc/crontab"
   tags:
-    - cron
-    - crontab
+    - aspects_cron
+    - aspects_cron_crontab
 
 - name: Set anacrontab template
   template: src="anacrontab.j2" dest="/etc/anacrontab"
   tags:
-    - cron
-    - anacrontab
+    - aspects_cron
+    - aspects_cron_anacrontab
 
 - name: Set normal cronjobs
+  when: item.value.special_time not defined
   cron: name="{{ item.value.name }}"
         state="{{ item.value.state }}"
         backup="{{ item.value.backup }}"
@@ -25,4 +26,16 @@
         job="{{ item.value.job }}"
   with_dict: aspects_cron_jobs
   tags:
-    - cron
+    - aspects_cron
+
+- name: Set special cronjobs
+  when: item.value.special_time
+  cron: name="{{ item.value.name }}"
+        state="{{ item.value.state }}"
+        backup="{{ item.value.backup }}"
+        special_time="{{ item.value.special_time }}"
+        user="{{ item.value.user }}"
+        job="{{ item.value.job }}"
+  with_dict: aspects_cron_jobs
+  tags:
+    - aspects_cron
