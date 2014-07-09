@@ -13,7 +13,7 @@
     - aspects_cron_anacrontab
 
 - name: Set normal cronjobs
-  when: item.value.special_time not defined
+  when: item.value.special_time is not defined
   cron: name="{{ item.value.name }}"
         state="{{ item.value.state }}"
         backup="{{ item.value.backup }}"
@@ -29,7 +29,7 @@
     - aspects_cron
 
 - name: Set special cronjobs
-  when: item.value.special_time
+  when: item.value.special_time is defined
   cron: name="{{ item.value.name }}"
         state="{{ item.value.state }}"
         backup="{{ item.value.backup }}"
