@@ -4,7 +4,7 @@ galaxy_info:
   description: Control crontab, anacrontab, and normal user cronjobs with simple dictionary definitions.
   company: Lane Community College
   license: MIT
-  min_ansible_version: 1.6
+  min_ansible_version: 1.9
   platforms:
   - name: CentOS
     versions:
@@ -12,7 +12,7 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - precise
-  #  - trusty
+    - trusty
   #- name: SLES
   #  versions:
   #  - all
