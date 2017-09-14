@@ -1,5 +1,8 @@
 ---
-# defaults file for cron
+aspects_cron_enabled: False
+
+# Default configuration taken from CentOS default /etc/anacrontab for anacron_ variables.
+# Default configuration taken from Ubuntu default /etc/crontab for crontab_ variables.
 aspects_cron_config:
   shell: "/bin/bash"
   path: "/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"

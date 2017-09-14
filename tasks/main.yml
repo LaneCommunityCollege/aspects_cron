@@ -1,47 +1,6 @@
 ---
-# tasks file for cron
-- name: Set crontab template
-  template:
-    src: "crontab.j2"
-    dest: "/etc/crontab"
+- name: Include init.yml
+  when: aspects_cron_enabled
+  include: init.yml
   tags:
-    - aspects_cron
-    - aspects_cron_crontab
-
-- name: Set anacrontab template
-  template:
-    src: "anacrontab.j2"
-    dest: "/etc/anacrontab"
-  tags:
-    - aspects_cron
-    - aspects_cron_anacrontab
-
-- name: Set normal cronjobs
-  when: item.value.special_time is not defined
-  cron:
-    name: "{{ item.value.name }}"
-    state: "{{ item.value.state }}"
-    backup: "{{ item.value.backup }}"
-    minute: "{{ item.value.minute }}"
-    hour: "{{ item.value.hour }}"
-    day: "{{ item.value.day }}"
-    weekday: "{{ item.value.weekday }}"
-    month: "{{ item.value.month }}"
-    user: "{{ item.value.user }}"
-    job: "{{ item.value.job }}"
-  with_dict: "{{ aspects_cron_jobs|default('{}') }}"
-  tags:
-    - aspects_cron
-
-- name: Set special cronjobs
-  when: item.value.special_time is defined
-  cron:
-    name: "{{ item.value.name }}"
-    state: "{{ item.value.state }}"
-    backup: "{{ item.value.backup }}"
-    special_time: "{{ item.value.special_time }}"
-    user: "{{ item.value.user }}"
-    job: "{{ item.value.job }}"
-  with_dict: "{{ aspects_cron_jobs|default('{}') }}"
-  tags:
-    - aspects_cron
+  - aspects_cron
