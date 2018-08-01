@@ -28,6 +28,7 @@
 
 - name: Set normal cronjobs
   when: item.value.special_time is not defined
+  become: True
   cron:
     name: "{{ item.value.name }}"
     state: "{{ item.value.state }}"
