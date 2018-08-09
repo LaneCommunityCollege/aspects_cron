@@ -25,7 +25,36 @@ If you don't want to use `aspects_packages`, just set `aspects_packages_enabled:
 # Example Playbook
 
 ```yaml
-
+- hosts:
+  - aspects_cron
+  vars:
+    aspects_cron_enabled: True
+    aspects_packages_enabled: True
+    aspects_cron_jobs:
+      testecho:
+        name: "Test echo job."
+        state: "absent"
+        backup: "no"
+        minute: "23"
+        hour: "3"
+        day: "5"
+        weekday: "5"
+        month: "2"
+        user: "root"
+        job: "echo noghlsdkjf > /dev/null"
+      testecho2:
+        name: "Another Test echo job."
+        state: "present"
+        backup: "no"
+        minute: "23"
+        hour: "3"
+        day: "5"
+        weekday: "5"
+        month: "2"
+        user: "root"
+        job: "echo noghlsdkjf > /dev/null"
+  roles:
+  - aspects_cron
 ```
 
 # License
