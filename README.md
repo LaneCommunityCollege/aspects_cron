@@ -1,14 +1,13 @@
-cron
-========
+# aspects_cron
 
 Manage anacrontab, crontab, and normal user cronjobs with simple dictionary definitions.
 
-Requirements
-------------
+# Requirements
+
 Set ```hash_behaviour=merge``` in your ansible.cfg file.
 
-Role Variables
---------------
+# Role Variables
+
 
 Variables should be self explanatory. If any are confusing, checking the anacrontab or crontab man pages should clear things up.
 
@@ -23,7 +22,12 @@ If True, run tasks in this role.
 
 If you don't want to use `aspects_packages`, just set `aspects_packages_enabled: False`.
 
-License
--------
+# Example Playbook
+
+```yaml
+
+```
+
+# License
 
 MIT
