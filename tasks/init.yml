@@ -40,7 +40,7 @@
     month: "{{ item.value.month }}"
     user: "{{ item.value.user }}"
     job: "{{ item.value.job }}"
-  with_dict: "{{ aspects_cron_jobs|default('{}') }}"
+  loop: "{{ aspects_cron_jobs|default('{}')|dict2items }}"
   tags:
     - aspects_cron
 
@@ -53,6 +53,6 @@
     special_time: "{{ item.value.special_time }}"
     user: "{{ item.value.user }}"
     job: "{{ item.value.job }}"
-  with_dict: "{{ aspects_cron_jobs|default('{}') }}"
+  loop: "{{ aspects_cron_jobs|default('{}')|dict2items }}"
   tags:
     - aspects_cron
