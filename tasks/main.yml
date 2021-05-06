@@ -4,3 +4,6 @@
   include: init.yml
   tags:
   - aspects_cron
+  - aspects_cron_debug
+  - aspects_cron_crontab
+  - aspects_cron_anacrontab
