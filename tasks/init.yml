@@ -27,32 +27,32 @@
     - aspects_cron_anacrontab
 
 - name: Set normal cronjobs
-  when: item.value.special_time is not defined
+  when: item.1.special_time is not defined
   become: True
   cron:
-    name: "{{ item.value.name }}"
-    state: "{{ item.value.state }}"
-    backup: "{{ item.value.backup }}"
-    minute: "{{ item.value.minute }}"
-    hour: "{{ item.value.hour }}"
-    day: "{{ item.value.day }}"
-    weekday: "{{ item.value.weekday }}"
-    month: "{{ item.value.month }}"
-    user: "{{ item.value.user }}"
-    job: "{{ item.value.job }}"
-  loop: "{{ aspects_cron_jobs|default('{}')|dict2items }}"
+    name: "{{ item.1.name }}"
+    state: "{{ item.1.state }}"
+    backup: "{{ item.1.backup }}"
+    minute: "{{ item.1.minute }}"
+    hour: "{{ item.1.hour }}"
+    day: "{{ item.1.day }}"
+    weekday: "{{ item.1.weekday }}"
+    month: "{{ item.1.month }}"
+    user: "{{ item.1.user }}"
+    job: "{{ item.1.job }}"
+  loop: "{{ aspects_cron_jobs|default('{}') | dictsort }}"
   tags:
     - aspects_cron
 
 - name: Set special cronjobs
-  when: item.value.special_time is defined
+  when: item.1.special_time is defined
   cron:
-    name: "{{ item.value.name }}"
-    state: "{{ item.value.state }}"
-    backup: "{{ item.value.backup }}"
-    special_time: "{{ item.value.special_time }}"
-    user: "{{ item.value.user }}"
-    job: "{{ item.value.job }}"
-  loop: "{{ aspects_cron_jobs|default('{}')|dict2items }}"
+    name: "{{ item.1.name }}"
+    state: "{{ item.1.state }}"
+    backup: "{{ item.1.backup }}"
+    special_time: "{{ item.1.special_time }}"
+    user: "{{ item.1.user }}"
+    job: "{{ item.1.job }}"
+  loop: "{{ aspects_cron_jobs|default('{}') | dictsort }}"
   tags:
     - aspects_cron
