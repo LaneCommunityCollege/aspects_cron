@@ -56,3 +56,14 @@
   loop: "{{ aspects_cron_jobs|default('{}') | dictsort }}"
   tags:
     - aspects_cron
+
+- name: Manage env for a users crontab
+  when: item.1.enabled
+  cron:
+    name: "{{ item.1.variable }}"
+    env: yes
+    job: "{{ item.1.value }}"
+    user: "{{ item.1.user }}"
+  loop: "{{ aspects_cron_job_env|default('{}') | dictsort }}"
+  tags:
+    - aspects_cron

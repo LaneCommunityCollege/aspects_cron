@@ -53,6 +53,12 @@ If you don't want to use `aspects_packages`, just set `aspects_packages_enabled:
         month: "2"
         user: "root"
         job: "echo noghlsdkjf > /dev/null"
+    aspects_cron_job_env:
+      mailto:
+        enabled: True
+        variable: "MAILTO"
+        value: "root@examble.org"
+        user: "root"
   roles:
   - aspects_cron
 ```
